@@ -1,0 +1,22 @@
+2026-02-11 10:15:01 INFO  Server started on port 8080
+2026-02-11 10:15:05 INFO  Database connection established
+2026-02-11 10:15:12 INFO  User login request received (userId=1023)
+2026-02-11 10:15:12 INFO  Authentication successful (userId=1023)
+2026-02-11 10:15:18 INFO  GET /dashboard 200 OK
+2026-02-11 10:15:25 WARN  Slow response detected (responseTime=2100ms)
+2026-02-11 10:15:32 INFO  User logout request (userId=1023)
+2026-02-11 10:15:40 INFO  User login request received (userId=1045)
+2026-02-11 10:15:41 ERROR Invalid password attempt (userId=1045)
+2026-02-11 10:15:50 INFO  User login request received (userId=1045)
+2026-02-11 10:15:51 INFO  Authentication successful (userId=1045)
+2026-02-11 10:16:00 INFO  POST /order/create 201 CREATED
+2026-02-11 10:16:07 INFO  Payment service invoked (orderId=5589)
+2026-02-11 10:16:09 INFO  Payment successful (orderId=5589)
+2026-02-11 10:16:15 INFO  Email notification sent (userId=1045)
+2026-02-11 10:16:22 WARN  High memory usage detected (78%)
+2026-02-11 10:16:30 INFO  Scheduled backup started
+2026-02-11 10:16:45 INFO  Scheduled backup completed
+2026-02-11 10:16:55 INFO  GET /reports 200 OK
+2026-02-11 10:17:05 ERROR Database timeout occurred
+2026-02-11 10:17:10 INFO  Database reconnected successfully
+2026-02-11 10:17:20 INFO  System running normally
