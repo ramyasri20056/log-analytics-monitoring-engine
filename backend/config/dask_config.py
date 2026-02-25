@@ -1,4 +1,3 @@
-
 from dask.distributed import Client, LocalCluster
 #client (): client is a python method which is used to make a connection between dask cluster and
 #  python code which is mean as local machine 
