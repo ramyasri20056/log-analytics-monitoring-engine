@@ -1,38 +1,42 @@
-from typing import Dict
-from email.message import EmailMessage
 import smtplib
 
-SMTP_SERVER = "smtp.gmail.com"
-SMTP_PORT = 465
-EMAIL = "ramyasridusanapudi372@gmail.com"
-PASSWORD = ""
+def send_email(sender_email, receiver_email, password):
 
+    smtp_server = "smtp.gmail.com" #smtp server is a server that is used to send email . 
+    smtp_port = 587
 
-def send_anomaly_email(to_email: str, anomaly: Dict):
-    subject = "🚨 Log Anomaly Detected"
+    subject = "Test Email"
+    body = "Hello "
 
-    body = f"""
-🚨 Anomaly Detected in System Logs
+    # Create simple email text
+    message = f"Subject: {subject}\n\n{body}"
 
-Time Window : {anomaly['timestamp']}
-Error Count : {anomaly['error_count']}
-Z-Score     : {round(anomaly['z_score'], 2)}
+    try:
+        print("Connecting to SMTP server...")
+        server = smtplib.SMTP(smtp_server, smtp_port)
 
-Please investigate immediately.
+        print("Starting secure connection...")
+        server.starttls()
 
-Regards,
-Log Monitoring System
-"""
+        print("Logging in...")
+        server.login(sender_email, password)
 
-    msg = EmailMessage()
-    msg["Subject"] = subject
-    msg["From"] = EMAIL
-    msg["To"] = to_email
-    msg.set_content(body)
+        print("Sending email...")
+        server.sendmail(sender_email, receiver_email, message)
 
-    with smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT) as server:
-        server.login(EMAIL, PASSWORD)
-        server.send_message(msg)
+        print("Email sent successfully!")
+
+        server.quit()
+
+    except Exception as e:
+        print("Error:", e)
+
+# Example usage
+send_email(
+    sender_email="ramyasridusanapudi372@gmail.com",
+    receiver_email="mokshasriya@gmail.com",
+    password=""
+)
 #what is port number: port number that tells to the computer which server  or application should recive  the data .
 #example: buliding address  -->IP address {system} 
 #flat number --> port number {application}
