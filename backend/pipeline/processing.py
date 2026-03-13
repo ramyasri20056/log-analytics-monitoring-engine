@@ -7,20 +7,9 @@
 #why objects?
 #raw log data are strings intially ,which are in text files, using objects it is safer browser for better understanding
 
-
-# example
-# meta_data = {
-#     # pandas/dask expects a valid dtype; use datetime64 for timestamp
-#     "timestamp": "datetime64[ns]", 
-#     "level" : "string", 
-#     "service" : "string", 
-#     "message" : "string",
-# }
-
 import dask.dataframe as dd
 from backend.injection.parser import parse_log_line
 from backend.injection.loader import load_logs
-
 
 def process_pipeline(file_path):
     bag=load_logs(file_path)
@@ -28,12 +17,12 @@ def process_pipeline(file_path):
         bag.map(parse_log_line)
         .filter(lambda x: x is not None)  # Filter out lines that failed to parse
     )
-    meta = {
+    meta_data = {
         "timestamp": "datetime64[ns]", 
         "level" : "string", 
         "service" : "string", 
         "message" : "string",
     }
-    df = parsed.to_dataframe(meta=meta)
-    df["timestamp"] = dd.to_datetime(df["timestamp"], errors='coerce')  # Convert to datetime, coerce errors to NaT
+    df = parsed.to_dataframe(meta=meta_data)
+    df['timestamp'] = dd.to_datetime(df['timestamp'], errors='coerce')  # Convert to datetime, coerce errors to NaT
     return df
