@@ -11,7 +11,7 @@ def main():
     print("\n" + "=" * 50)
     start = time.time()
     # Build log processing pipeline
-    log_df = build_pipeline(r"D:\log-analytics-monitoring-engine\backend\sample_log\data_log.log")
+    log_df = build_pipeline("backend/sample_log/data_log.log")
     print("Parsed Log Data (Table Format):")
     print(log_df.compute())
     # Correct way to count rows

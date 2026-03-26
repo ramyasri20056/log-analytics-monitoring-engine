@@ -33,7 +33,7 @@ st.title("Python Based High Throughput Log Analytics Monitoring Engine")
 st.sidebar.header("Settings")
 log_file_path = st.sidebar.text_input(
     "Log File Path",
-    value=r"D:\log-analytics-monitoring-engine\backend\sample_log\data_log.log"
+    value=r"backend/sample_log/data_log.log"
 )
 
 if st.sidebar.button("Refresh Dashboard"):
